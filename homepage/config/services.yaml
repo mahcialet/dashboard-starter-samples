@@ -1,13 +1,43 @@
-- Resources:
+- Dashboard projects:
     - Homepage documentation:
         icon: homepage.png
         href: https://gethomepage.dev/
         description: 設定とサービス統合の公式ドキュメント
-    - Docker documentation:
+    - Dashy:
+        icon: dashy.png
+        href: https://dashy.to/docs/
+        description: テーマ、ウィジェット、UIエディタ
+    - Flame:
+        icon: flame.png
+        href: https://github.com/pawelmalak/flame
+        description: GUIで管理できるシンプルなSpeedDial
+    - Glance:
+        icon: glance.png
+        href: https://github.com/glanceapp/glance/tree/main/docs
+        description: フィードをまとめる軽量ダッシュボード
+    - Jump:
+        icon: jump.png
+        href: https://github.com/daledavies/jump
+        description: リンク集とリアルタイムステータス
+    - linkding:
+        icon: linkding.png
+        href: https://linkding.link/
+        description: タグと検索に強いブックマーク管理
+
+- Operations:
+    - Docker:
         icon: docker.png
         href: https://docs.docker.com/
         description: コンテナ運用の公式ドキュメント
-    - GitHub:
+    - Compose specification:
+        icon: docker.png
+        href: https://docs.docker.com/compose/compose-file/
+        description: compose.yamlのリファレンス
+    - Caddy:
+        icon: caddy.png
+        href: https://caddyserver.com/docs/
+        description: リバースプロキシの公式ドキュメント
+    - Awesome Selfhosted:
         icon: github.png
-        href: https://github.com/gethomepage/homepage
-        description: Homepageのソースコードとリリース
+        href: https://github.com/awesome-selfhosted/awesome-selfhosted
+        description: セルフホスト可能なOSSのカタログ

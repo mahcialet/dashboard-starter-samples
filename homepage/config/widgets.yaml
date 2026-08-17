@@ -1,3 +1,14 @@
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+- openmeteo:
+    label: Tokyo
+    latitude: 35.6762
+    longitude: 139.6503
+    timezone: Asia/Tokyo
+    units: metric
+    cache: 5
 - search:
     provider: duckduckgo
     target: _blank

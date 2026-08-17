@@ -5,12 +5,52 @@
   },
   "sites": [
     {
+      "name": "Homepage",
+      "url": "https://github.com/gethomepage/homepage",
+      "description": "YAMLとDocker自動検出に強いHomelabダッシュボード",
+      "icon": "github",
+      "nofollow": false,
+      "tags": ["home", "dashboard", "yaml"]
+    },
+    {
+      "name": "Dashy",
+      "url": "https://github.com/lissy93/dashy",
+      "description": "テーマ、ウィジェット、UIエディタが豊富なスタートページ",
+      "icon": "github",
+      "nofollow": false,
+      "tags": ["home", "dashboard", "gui"]
+    },
+    {
+      "name": "Flame",
+      "url": "https://github.com/pawelmalak/flame",
+      "description": "GUIでリンクを管理できるシンプルなSpeedDial",
+      "icon": "github",
+      "nofollow": false,
+      "tags": ["home", "dashboard", "gui"]
+    },
+    {
+      "name": "Glance",
+      "url": "https://github.com/glanceapp/glance",
+      "description": "RSS、天気、Docker情報を一画面にまとめるダッシュボード",
+      "icon": "github",
+      "nofollow": false,
+      "tags": ["home", "dashboard", "yaml"]
+    },
+    {
       "name": "Jump",
       "url": "https://github.com/daledavies/jump",
       "description": "Jumpのソースコードとリリース",
       "icon": "github",
       "nofollow": false,
       "tags": ["home", "dashboard"]
+    },
+    {
+      "name": "linkding",
+      "url": "https://github.com/sissbruecker/linkding",
+      "description": "タグと検索に強いセルフホスト型ブックマーク管理",
+      "icon": "github",
+      "nofollow": false,
+      "tags": ["home", "dashboard", "bookmarks"]
     },
     {
       "name": "Docker Documentation",
@@ -20,11 +60,18 @@
       "tags": ["home", "docker"]
     },
     {
+      "name": "Caddy Documentation",
+      "url": "https://caddyserver.com/docs/",
+      "description": "Caddyfileとリバースプロキシの公式ドキュメント",
+      "icon": "github",
+      "tags": ["home", "operations"]
+    },
+    {
       "name": "Awesome Selfhosted",
       "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
       "description": "セルフホスト可能なOSSの一覧",
       "icon": "github",
-      "tags": ["home", "dashboard"]
+      "tags": ["home", "community"]
     }
   ]
 }

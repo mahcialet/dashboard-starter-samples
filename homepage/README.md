@@ -1,6 +1,6 @@
 # Homepageサンプル
 
-Homelab向けダッシュボードHomepageのサンプルです。YAMLによるリンク／ウィジェット管理に加え、Dockerラベルから、このHomepageコンテナ自身をサービスとして自動検出します。
+Homelab向けダッシュボードHomepageのサンプルです。ダッシュボード製品と運用資料のリンク、ブックマーク、コンテナリソース、東京の天気、検索、日時を初期表示します。Dockerラベルから、このHomepageコンテナ自身をサービスとして自動検出する例も含みます。
 
 ## 起動
 
@@ -17,9 +17,9 @@ PORT=8081 HOMEPAGE_ALLOWED_HOSTS=localhost:8081 docker compose up -d
 ## 主な構成
 
 - `config/settings.yaml`: タイトル、テーマ、レイアウト
-- `config/services.yaml`: 手動で管理するサービスリンク
-- `config/bookmarks.yaml`: ブックマーク
-- `config/widgets.yaml`: 検索、日時ウィジェット
+- `config/services.yaml`: ダッシュボード製品と運用資料のサービスリンク
+- `config/bookmarks.yaml`: 開発、ドキュメント、コミュニティのブックマーク
+- `config/widgets.yaml`: コンテナリソース、天気、検索、日時ウィジェット
 - `config/docker.yaml`: ローカルDockerへの接続
 - `config/kubernetes.yaml`: Kubernetes連携を無効のまま明示する空設定
 - `config/proxmox.yaml`: Proxmox連携を無効のまま明示する空設定

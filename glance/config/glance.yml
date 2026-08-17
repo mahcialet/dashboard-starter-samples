@@ -11,14 +11,44 @@ pages:
 
           - type: bookmarks
             groups:
-              - title: Development
+              - title: Dashboards
                 links:
-                  - title: GitHub
-                    url: https://github.com/
-                  - title: Docker Hub
-                    url: https://hub.docker.com/
-                  - title: Glance documentation
+                  - title: Homepage
+                    url: https://github.com/gethomepage/homepage
+                  - title: Dashy
+                    url: https://github.com/lissy93/dashy
+                  - title: Flame
+                    url: https://github.com/pawelmalak/flame
+                  - title: Glance
+                    url: https://github.com/glanceapp/glance
+                  - title: Jump
+                    url: https://github.com/daledavies/jump
+                  - title: linkding
+                    url: https://github.com/sissbruecker/linkding
+              - title: Operations
+                links:
+                  - title: Docker
+                    url: https://docs.docker.com/
+                  - title: Caddy
+                    url: https://caddyserver.com/docs/
+                  - title: Glance docs
                     url: https://github.com/glanceapp/glance/tree/main/docs
+                  - title: Awesome Selfhosted
+                    url: https://github.com/awesome-selfhosted/awesome-selfhosted
+
+          - type: monitor
+            cache: 1m
+            title: Public service status
+            sites:
+              - title: GitHub
+                url: https://github.com/
+                icon: si:github
+              - title: Docker Hub
+                url: https://hub.docker.com/
+                icon: si:docker
+              - title: Caddy
+                url: https://caddyserver.com/
+                icon: si:caddy
 
       - size: full
         widgets:
@@ -39,6 +69,10 @@ pages:
               - url: https://github.com/lissy93/dashy/releases.atom
                 title: Dashy
 
+          - type: hacker-news
+            limit: 10
+            collapse-after: 5
+
           - type: docker-containers
             hide-by-default: false
 
@@ -55,4 +89,5 @@ pages:
               - glanceapp/glance
               - gethomepage/homepage
               - lissy93/dashy
+              - daledavies/jump
               - sissbruecker/linkding

@@ -5,3 +5,25 @@
     - Docker Hub:
         - icon: docker.png
           href: https://hub.docker.com/
+    - GitHub Releases:
+        - icon: github.png
+          href: https://github.com/topics/self-hosted
+
+- Documentation:
+    - Homepage:
+        - icon: homepage.png
+          href: https://gethomepage.dev/configs/
+    - Docker Compose:
+        - icon: docker.png
+          href: https://docs.docker.com/compose/
+    - Caddyfile:
+        - icon: caddy.png
+          href: https://caddyserver.com/docs/caddyfile
+
+- Community:
+    - Awesome Selfhosted:
+        - icon: github.png
+          href: https://github.com/awesome-selfhosted/awesome-selfhosted
+    - r/selfhosted:
+        - icon: reddit.png
+          href: https://www.reddit.com/r/selfhosted/

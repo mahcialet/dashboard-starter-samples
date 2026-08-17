@@ -41,6 +41,8 @@ Docker EngineとDocker Compose v2が必要です。
 
 linkdingはサンプルをすぐ試せるよう、既定で認証OFF相当の自動ログインです。認証を有効にする場合は `LINKDING_AUTH_BYPASS=False ./start.sh` とし、ユーザー名 `admin`、パスワード `change-me` でログインします。`LD_SUPERUSER_NAME` と `LD_SUPERUSER_PASSWORD` で資格情報を変更できます。既定の認証バイパス状態はインターネットへ公開しないでください。
 
+各製品には比較用の初期コンテンツがあります。Homepage、Dashy、Glance、JumpはGit管理できる設定ファイルからリンクやウィジェットを読み込みます。Flameは初期化API、linkdingは公式のNetscapeブックマーク取り込みコマンドで、named volumeへ初回だけデータを投入します。
+
 統合起動時も各アプリ本体はホストへ直接公開されず、すべてCaddyを経由します。停止はリポジトリルートで `docker compose down` とします。ポートを明示管理したい場合は、`INDEX_PORT`、`HOMEPAGE_PORT`、`DASHY_PORT`、`FLAME_PORT`、`GLANCE_PORT`、`JUMP_PORT`、`LINKDING_PORT` を指定して `docker compose up -d` を直接実行できます。
 
 ### 1サービスだけ試す
@@ -75,7 +77,7 @@ PORT=8081 HOMEPAGE_ALLOWED_HOSTS=localhost:8081 docker compose up -d
 
 - 各サンプルは公式コンテナイメージ、`compose.yaml`、初期設定または永続ボリューム、日本語READMEを含みます。
 - 設定ファイル型の製品には、リンク、フィード、死活監視、Docker表示などをすぐ比較できる初期データを用意しています。
-- GUI管理型のFlameとlinkdingはDocker named volumeへデータを保存します。`docker compose down` ではデータは残り、`docker compose down -v` で削除できます。
+- GUI管理型のFlameとlinkdingはDocker named volumeへデータを保存し、初期リンク／ブックマークを自動投入します。`docker compose down` ではデータは残り、`docker compose down -v` で初期化できます。
 - Docker連携を試すサンプルはDockerソケットを参照します。これは強い権限につながるため、公開環境ではソケットプロキシや権限制限を検討してください。
 - `latest` タグは比較を始めやすくするためのものです。本番利用時は検証済みバージョンへ固定し、認証、TLS、バックアップを追加してください。
 

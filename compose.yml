@@ -24,12 +24,20 @@ services:
       - caddy-data:/data
       - caddy-config:/config
     depends_on:
-      - homepage
-      - dashy
-      - flame
-      - glance
-      - jump
-      - linkding
+      homepage:
+        condition: service_started
+      dashy:
+        condition: service_started
+      flame:
+        condition: service_started
+      glance:
+        condition: service_started
+      jump:
+        condition: service_started
+      linkding:
+        condition: service_started
+      linkding-init:
+        condition: service_completed_successfully
     restart: unless-stopped
 
   homepage:
@@ -153,6 +161,20 @@ services:
     volumes:
       - linkding-data:/etc/linkding/data
     restart: unless-stopped
+
+  linkding-init:
+    image: sissbruecker/linkding:latest
+    command: ["sh", "/seed/seed.sh"]
+    environment:
+      LD_SUPERUSER_NAME: "${LD_SUPERUSER_NAME:-admin}"
+    volumes:
+      - linkding-data:/etc/linkding/data
+      - ./linkding/bookmarks.html:/seed/bookmarks.html:ro
+      - ./linkding/seed.sh:/seed/seed.sh:ro
+    depends_on:
+      linkding:
+        condition: service_healthy
+    restart: "no"
 
 volumes:
   caddy-data:

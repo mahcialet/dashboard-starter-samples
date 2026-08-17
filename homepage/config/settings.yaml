@@ -9,6 +9,9 @@ layout:
   Dashboard samples:
     style: row
     columns: 3
-  Resources:
+  Dashboard projects:
     style: row
     columns: 3
+  Operations:
+    style: row
+    columns: 4

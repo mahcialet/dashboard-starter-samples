@@ -6,6 +6,8 @@ pageInfo:
       path: https://dashy.to/docs
     - title: GitHub
       path: https://github.com/lissy93/dashy
+    - title: Awesome Selfhosted
+      path: https://github.com/awesome-selfhosted/awesome-selfhosted
 
 appConfig:
   theme: nord-frost
@@ -19,28 +21,78 @@ sections:
   - name: Dashboard projects
     icon: fas fa-gauge-high
     displayData:
-      cols: 2
+      cols: 3
     items:
+      - title: Homepage
+        description: YAMLとDocker自動検出に強いダッシュボード
+        url: https://github.com/gethomepage/homepage
+        icon: si-github
       - title: Dashy
-        description: ソースコード、Issue、リリース
+        description: ウィジェットとテーマが豊富なスタートページ
         url: https://github.com/lissy93/dashy
         icon: si-github
-      - title: Docker
-        description: Docker公式ドキュメント
+      - title: Flame
+        description: GUIで管理できるシンプルなSpeedDial
+        url: https://github.com/pawelmalak/flame
+        icon: si-github
+      - title: Glance
+        description: RSS、天気、Docker情報を一画面に集約
+        url: https://github.com/glanceapp/glance
+        icon: si-github
+      - title: Jump
+        description: リンク集とリアルタイムステータス
+        url: https://github.com/daledavies/jump
+        icon: si-github
+      - title: linkding
+        description: タグと検索に強いブックマーク管理
+        url: https://github.com/sissbruecker/linkding
+        icon: si-github
+
+  - name: Operations toolkit
+    icon: fas fa-screwdriver-wrench
+    displayData:
+      cols: 2
+    items:
+      - title: Docker documentation
+        description: コンテナとComposeの公式ドキュメント
         url: https://docs.docker.com/
         icon: si-docker
-      - title: Self-Hosted
-        description: セルフホスト関連のリンク集
+      - title: Caddy documentation
+        description: Caddyfileとリバースプロキシの設定
+        url: https://caddyserver.com/docs/
+        icon: si-caddy
+      - title: Compose specification
+        description: compose.yamlのサービス、volume、network定義
+        url: https://docs.docker.com/compose/compose-file/
+        icon: si-docker
+      - title: Awesome Selfhosted
+        description: セルフホスト可能なOSSのカタログ
         url: https://github.com/awesome-selfhosted/awesome-selfhosted
         icon: si-github
+
+  - name: Tokyo clock
+    icon: fas fa-clock
+    displayData:
+      cols: 1
+    widgets:
+      - type: clock
+        options:
+          timeZone: Asia/Tokyo
+          format: ja-JP
+          hideSeconds: true
 
   - name: Latest releases
     icon: fas fa-rss
     displayData:
-      cols: 1
+      cols: 2
     widgets:
       - type: rss-feed
         options:
           rssUrl: https://github.com/lissy93/dashy/releases.atom
+          limit: 5
+        useProxy: true
+      - type: rss-feed
+        options:
+          rssUrl: https://github.com/glanceapp/glance/releases.atom
           limit: 5
         useProxy: true

@@ -8,8 +8,8 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
     depends_on:
-      linkding:
-        condition: service_healthy
+      linkding-init:
+        condition: service_completed_successfully
     restart: unless-stopped
 
   linkding:
@@ -22,6 +22,20 @@ services:
     volumes:
       - linkding-data:/etc/linkding/data
     restart: unless-stopped
+
+  linkding-init:
+    image: sissbruecker/linkding:latest
+    command: ["sh", "/seed/seed.sh"]
+    environment:
+      LD_SUPERUSER_NAME: "${LD_SUPERUSER_NAME:-admin}"
+    volumes:
+      - linkding-data:/etc/linkding/data
+      - ./bookmarks.html:/seed/bookmarks.html:ro
+      - ./seed.sh:/seed/seed.sh:ro
+    depends_on:
+      linkding:
+        condition: service_healthy
+    restart: "no"
 
 volumes:
   linkding-data:
