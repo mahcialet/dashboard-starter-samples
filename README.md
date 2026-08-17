@@ -15,7 +15,35 @@
 
 ## 動かし方
 
-Docker EngineとDocker Compose v2が必要です。試したいディレクトリへ移動し、次のコマンドを実行します。
+Docker EngineとDocker Compose v2が必要です。
+
+### 全サービスをまとめて試す
+
+リポジトリルートで `start.sh` を実行すると、Caddyのインデックスページと6製品をまとめて起動できます。
+
+```bash
+./start.sh
+```
+
+8080番から順に空きポートを探すため、使用中のポートは自動的にスキップされます。起動後に表示されるIndex URLを開くと製品一覧が表示され、各カードが実際に割り当てられたCaddyリバースプロキシを別タブで開きます。探索開始位置は `START_PORT=18080 ./start.sh` のように変更できます。
+
+衝突がない場合の既定URLは次のとおりです。
+
+| 既定URL | サービス |
+| --- | --- |
+| <http://localhost:8080> | インデックス |
+| <http://localhost:8081> | Homepage |
+| <http://localhost:8082> | Dashy |
+| <http://localhost:8083> | Flame |
+| <http://localhost:8084> | Glance |
+| <http://localhost:8085> | Jump |
+| <http://localhost:8086> | linkding |
+
+統合起動時も各アプリ本体はホストへ直接公開されず、すべてCaddyを経由します。停止はリポジトリルートで `docker compose down` とします。ポートを明示管理したい場合は、`INDEX_PORT`、`HOMEPAGE_PORT`、`DASHY_PORT`、`FLAME_PORT`、`GLANCE_PORT`、`JUMP_PORT`、`LINKDING_PORT` を指定して `docker compose up -d` を直接実行できます。
+
+### 1サービスだけ試す
+
+試したいディレクトリへ移動し、そのディレクトリの `compose.yaml` を起動します。
 
 ```bash
 cd homepage

@@ -22,6 +22,8 @@ PORT=8081 HOMEPAGE_ALLOWED_HOSTS=localhost:8081 docker compose up -d
 - `config/widgets.yaml`: 検索、日時ウィジェット
 - `config/docker.yaml`: ローカルDockerへの接続
 - `config/kubernetes.yaml`: Kubernetes連携を無効のまま明示する空設定
+- `config/proxmox.yaml`: Proxmox連携を無効のまま明示する空設定
+- `config/custom.css`／`custom.js`: 任意の見た目とブラウザ処理
 - `compose.yaml` の `homepage.*` ラベル: Docker自動検出の例
 
 設定ファイルを保存すると通常は自動で反映されます。Dockerソケットのマウントはコンテナ情報を読むために必要ですが、ホスト上のDockerへ強いアクセスを与えます。不要ならソケットのvolume、`config/docker.yaml`、`homepage.*` ラベルを外してください。

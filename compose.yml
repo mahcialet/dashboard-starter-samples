@@ -1,0 +1,127 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "${INDEX_PORT:-8080}:8080"
+      - "${HOMEPAGE_PORT:-8081}:8081"
+      - "${DASHY_PORT:-8082}:8082"
+      - "${FLAME_PORT:-8083}:8083"
+      - "${GLANCE_PORT:-8084}:8084"
+      - "${JUMP_PORT:-8085}:8085"
+      - "${LINKDING_PORT:-8086}:8086"
+    environment:
+      INDEX_PORT: "${INDEX_PORT:-8080}"
+      HOMEPAGE_PORT: "${HOMEPAGE_PORT:-8081}"
+      DASHY_PORT: "${DASHY_PORT:-8082}"
+      FLAME_PORT: "${FLAME_PORT:-8083}"
+      GLANCE_PORT: "${GLANCE_PORT:-8084}"
+      JUMP_PORT: "${JUMP_PORT:-8085}"
+      LINKDING_PORT: "${LINKDING_PORT:-8086}"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./caddy/site:/srv:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - homepage
+      - dashy
+      - flame
+      - glance
+      - jump
+      - linkding
+    restart: unless-stopped
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: homepage:3000
+    volumes:
+      - ./homepage/config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      homepage.group: Dashboard samples
+      homepage.name: Homepage
+      homepage.icon: homepage.png
+      homepage.href: "http://localhost:${HOMEPAGE_PORT:-8081}"
+      homepage.description: Caddy経由で公開されるHomepage
+    restart: unless-stopped
+
+  dashy:
+    image: lissy93/dashy:latest
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./dashy/user-data:/app/user-data
+    restart: unless-stopped
+
+  flame:
+    image: pawelmalak/flame:latest
+    environment:
+      PASSWORD: "${FLAME_PASSWORD:-change-me}"
+    volumes:
+      - flame-data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      flame.type: application
+      flame.name: Flame sample
+      flame.url: "http://localhost:${FLAME_PORT:-8083}"
+      flame.icon: docker
+    restart: unless-stopped
+
+  glance:
+    image: glanceapp/glance:latest
+    volumes:
+      - ./glance/config:/app/config:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      glance.name: Glance sample
+      glance.icon: si:glance
+      glance.url: "http://localhost:${GLANCE_PORT:-8084}"
+      glance.description: Caddy経由で公開されるGlance
+    restart: unless-stopped
+
+  jump:
+    image: daledavies/jump:latest
+    volumes:
+      - ./jump/sites:/sites
+      - ./jump/search:/search
+    environment:
+      SITENAME: Dashboard Lab
+      SHOWCLOCK: "true"
+      SHOWSEARCH: "true"
+      CHECKSTATUS: "true"
+      STATUSCACHE: "5"
+      NOINDEX: "true"
+      DOCKERPROXYURL: dockerproxy:2375
+    labels:
+      jump.name: Jump sample
+      jump.url: "http://localhost:${JUMP_PORT:-8085}"
+      jump.description: Caddy経由で公開されるJump
+      jump.tags: home,docker
+    depends_on:
+      - dockerproxy
+    restart: unless-stopped
+
+  dockerproxy:
+    image: tecnativa/docker-socket-proxy:latest
+    environment:
+      CONTAINERS: "1"
+      POST: "0"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    restart: unless-stopped
+
+  linkding:
+    image: sissbruecker/linkding:latest
+    environment:
+      LD_SUPERUSER_NAME: "${LD_SUPERUSER_NAME:-admin}"
+      LD_SUPERUSER_PASSWORD: "${LD_SUPERUSER_PASSWORD:-change-me}"
+    volumes:
+      - linkding-data:/etc/linkding/data
+    restart: unless-stopped
+
+volumes:
+  caddy-data:
+  caddy-config:
+  flame-data:
+  linkding-data:
