@@ -13,7 +13,31 @@ services:
       flame.name: Flame sample
       flame.url: "http://localhost:${PORT:-8080}"
       flame.icon: docker
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:5005').then((response) => { if (!response.ok) process.exit(1); }).catch(() => process.exit(1));"
+      interval: 5s
+      timeout: 3s
+      start_period: 10s
+      retries: 12
     restart: unless-stopped
+
+  flame-init:
+    image: pawelmalak/flame:latest
+    command: ["node", "/seed/seed.mjs"]
+    environment:
+      FLAME_URL: http://flame:5005
+      FLAME_PASSWORD: "${FLAME_PASSWORD:-change-me}"
+    volumes:
+      - flame-data:/app/data
+      - ./seed.mjs:/seed/seed.mjs:ro
+    depends_on:
+      flame:
+        condition: service_healthy
+    restart: "no"
 
 volumes:
   flame-data:
