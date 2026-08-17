@@ -45,9 +45,11 @@ Docker EngineとDocker Compose v2が必要です。
 
 linkdingはサンプルをすぐ試せるよう、既定で認証OFF相当の自動ログインです。認証を有効にする場合は `LINKDING_AUTH_BYPASS=False ./start.sh` とし、ユーザー名 `admin`、パスワード `change-me` でログインします。`LD_SUPERUSER_NAME` と `LD_SUPERUSER_PASSWORD` で資格情報を変更できます。既定の認証バイパス状態はインターネットへ公開しないでください。
 
-Homarrは初回アクセス時にオンボーディングが表示され、管理ユーザーなどをGUIで設定します。公式スターターボードは自動生成されます。連携情報の暗号化に使う既定鍵はサンプル専用です。本番利用では初回起動前に `HOMARR_SECRET_ENCRYPTION_KEY` へ64文字の16進数鍵を設定し、その後は同じ値を保管・再利用してください。
+Homarrも既定では認証OFF相当の自動ログインです。公式デモデータの管理者 `demo`（パスワード `demo`）と編集可能なサンプルボードが作成済みの状態で開きます。通常のログインを試す場合は `HOMARR_AUTH_ENABLED=True ./start.sh` とし、`demo / demo` でログインします。表示言語は初回にブラウザの優先言語から選ばれ、その後はHomarr上で選択した言語がCookieへ保存されます。固定の管理者セッションと資格情報はサンプル専用のため、既定状態をインターネットへ公開しないでください。
 
-各製品には比較用の初期コンテンツまたは初回セットアップを用意しています。Homepage、Dashy、Glance、Jump、HomerはGit管理できる設定ファイルからリンクやウィジェットを読み込みます。Flameは初期化API、linkdingは公式のNetscapeブックマーク取り込みコマンドで、named volumeへ初回だけデータを投入します。Homarrは公式スターターボードを生成し、GUI編集を体験できるオンボーディングから開始します。
+Homarrの連携情報の暗号化に使う既定鍵もサンプル専用です。本番利用では初回起動前に `HOMARR_SECRET_ENCRYPTION_KEY` へ64文字の16進数鍵を設定し、その後は同じ値を保管・再利用してください。
+
+各製品には比較用の初期コンテンツを用意しています。Homepage、Dashy、Glance、Jump、HomerはGit管理できる設定ファイルからリンクやウィジェットを読み込みます。Flameは初期化API、linkdingは公式のNetscapeブックマーク取り込みコマンドで、named volumeへ初回だけデータを投入します。Homarrは公式のデモ用管理者、アプリ、ウィジェット、ボードを自動生成します。
 
 統合起動時も各アプリ本体はホストへ直接公開されず、すべてCaddyを経由します。停止はリポジトリルートで `docker compose down` とします。ポートを明示管理したい場合は、`INDEX_PORT`、`HOMEPAGE_PORT`、`DASHY_PORT`、`FLAME_PORT`、`GLANCE_PORT`、`JUMP_PORT`、`LINKDING_PORT`、`HOMARR_PORT`、`HOMER_PORT` を指定して `docker compose up -d` を直接実行できます。
 
@@ -83,7 +85,7 @@ PORT=8081 HOMEPAGE_ALLOWED_HOSTS=localhost:8081 docker compose up -d
 
 - 各サンプルは公式コンテナイメージ、`compose.yaml`、初期設定または永続ボリューム、日本語READMEを含みます。
 - 設定ファイル型の製品には、リンク、フィード、死活監視、Docker表示などをすぐ比較できる初期データを用意しています。
-- GUI管理型のFlame、linkding、HomarrはDocker named volumeへデータを保存します。Flameとlinkdingは初期リンク／ブックマークを自動投入し、Homarrは初回オンボーディングで設定します。`docker compose down` ではデータは残り、`docker compose down -v` で初期化できます。
+- GUI管理型のFlame、linkding、HomarrはDocker named volumeへデータを保存し、比較用コンテンツを自動投入します。`docker compose down` ではデータは残り、`docker compose down -v` で初期化できます。
 - Docker連携を試すサンプルはDockerソケットを参照します。これは強い権限につながるため、公開環境ではソケットプロキシや権限制限を検討してください。
 - `latest` タグは比較を始めやすくするためのものです。本番利用時は検証済みバージョンへ固定し、認証、TLS、バックアップを追加してください。
 

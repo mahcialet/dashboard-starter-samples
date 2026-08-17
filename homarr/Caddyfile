@@ -4,48 +4,6 @@
 }
 
 :8080 {
-	root * /srv
-	encode zstd gzip
-	templates
-	file_server
-
-	header {
-		Referrer-Policy "no-referrer"
-		X-Content-Type-Options "nosniff"
-		X-Frame-Options "DENY"
-	}
-}
-
-:8081 {
-	reverse_proxy homepage:3000 {
-		header_up Host homepage:3000
-		header_up X-Forwarded-Host homepage:3000
-	}
-}
-
-:8082 {
-	reverse_proxy dashy:8080
-}
-
-:8083 {
-	reverse_proxy flame:5005
-}
-
-:8084 {
-	reverse_proxy glance:8080
-}
-
-:8085 {
-	reverse_proxy jump:8080
-}
-
-:8086 {
-	reverse_proxy linkding:9090 {
-		header_up Remote-User {$LINKDING_PROXY_USER:admin}
-	}
-}
-
-:8087 {
 	map {env.HOMARR_AUTH_ENABLED} {homarr_auth_cookie} {
 		true ""
 		True ""
@@ -102,8 +60,4 @@
 	reverse_proxy homarr:7575 {
 		header_up Cookie "{homarr_auth_cookie}{homarr_locale_cookie}{http.request.header.Cookie}"
 	}
-}
-
-:8088 {
-	reverse_proxy homer:8080
 }
