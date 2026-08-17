@@ -133,6 +133,24 @@ const applications = [
     description: 'ブックマーク管理',
     isPublic: 1,
   },
+  {
+    name: 'Homarr',
+    url:
+      process.env.SAMPLE_HOMARR_URL ??
+      'https://github.com/homarr-labs/homarr',
+    icon: 'view-dashboard-edit',
+    description: 'GUI編集型ダッシュボード',
+    isPublic: 1,
+  },
+  {
+    name: 'Homer',
+    url:
+      process.env.SAMPLE_HOMER_URL ??
+      'https://github.com/bastienwirtz/homer',
+    icon: 'feather',
+    description: '静的YAMLランチャー',
+    isPublic: 1,
+  },
 ];
 
 for (const application of applications) {
@@ -149,6 +167,8 @@ const categories = [
       ['Glance', 'https://github.com/glanceapp/glance', 'github'],
       ['Jump', 'https://github.com/daledavies/jump', 'github'],
       ['linkding', 'https://github.com/sissbruecker/linkding', 'github'],
+      ['Homarr', 'https://github.com/homarr-labs/homarr', 'github'],
+      ['Homer', 'https://github.com/bastienwirtz/homer', 'github'],
     ],
   },
   {

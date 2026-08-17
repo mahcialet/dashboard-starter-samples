@@ -57,6 +57,8 @@ assign_port FLAME_PORT
 assign_port GLANCE_PORT
 assign_port JUMP_PORT
 assign_port LINKDING_PORT
+assign_port HOMARR_PORT
+assign_port HOMER_PORT
 
 docker compose up -d
 
@@ -69,3 +71,5 @@ printf '  Flame:    http://localhost:%s\n' "${FLAME_PORT}"
 printf '  Glance:   http://localhost:%s\n' "${GLANCE_PORT}"
 printf '  Jump:     http://localhost:%s\n' "${JUMP_PORT}"
 printf '  linkding: http://localhost:%s\n' "${LINKDING_PORT}"
+printf '  Homarr:   http://localhost:%s\n' "${HOMARR_PORT}"
+printf '  Homer:    http://localhost:%s\n' "${HOMER_PORT}"

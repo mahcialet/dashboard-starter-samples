@@ -23,6 +23,14 @@
         icon: linkding.png
         href: https://linkding.link/
         description: タグと検索に強いブックマーク管理
+    - Homarr:
+        icon: homarr.png
+        href: https://github.com/homarr-labs/homarr
+        description: GUIで配置するHomelabダッシュボード
+    - Homer:
+        icon: homer.png
+        href: https://github.com/bastienwirtz/homer
+        description: Git管理しやすい静的YAMLランチャー
 
 - Operations:
     - Docker:

@@ -53,6 +53,22 @@
       "tags": ["home", "dashboard", "bookmarks"]
     },
     {
+      "name": "Homarr",
+      "url": "https://github.com/homarr-labs/homarr",
+      "description": "ドラッグ＆ドロップで配置するGUI編集型Homelabダッシュボード",
+      "icon": "github",
+      "nofollow": false,
+      "tags": ["home", "dashboard", "gui"]
+    },
+    {
+      "name": "Homer",
+      "url": "https://github.com/bastienwirtz/homer",
+      "description": "Git管理しやすい軽量な静的YAMLランチャー",
+      "icon": "github",
+      "nofollow": false,
+      "tags": ["home", "dashboard", "yaml"]
+    },
+    {
       "name": "Docker Documentation",
       "url": "https://docs.docker.com/",
       "description": "Docker公式ドキュメント",

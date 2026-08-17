@@ -47,6 +47,14 @@ sections:
         description: タグと検索に強いブックマーク管理
         url: https://github.com/sissbruecker/linkding
         icon: si-github
+      - title: Homarr
+        description: ドラッグ＆ドロップで配置するGUI編集型ダッシュボード
+        url: https://github.com/homarr-labs/homarr
+        icon: si-github
+      - title: Homer
+        description: Git管理しやすい軽量な静的YAMLランチャー
+        url: https://github.com/bastienwirtz/homer
+        icon: si-github
 
   - name: Operations toolkit
     icon: fas fa-screwdriver-wrench

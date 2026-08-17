@@ -1,0 +1,115 @@
+---
+title: Dashboard Lab
+subtitle: Homer static YAML launcher
+icon: fa-solid fa-house
+header: true
+footer: false
+theme: default
+columns: "4"
+
+defaults:
+  layout: columns
+  colorTheme: auto
+
+message:
+  style: is-dark
+  title: Lightweight by design
+  icon: fa-solid fa-feather
+  content: >-
+    このページは単一のYAMLから配信されています。検索、テーマ切り替え、タグ表示と
+    Git管理しやすい静的構成を試せます。
+
+links:
+  - name: Homer documentation
+    icon: fa-solid fa-book
+    url: https://github.com/bastienwirtz/homer/blob/main/docs/configuration.md
+    target: _blank
+  - name: GitHub
+    icon: fa-brands fa-github
+    url: https://github.com/bastienwirtz/homer
+    target: _blank
+  - name: Awesome Selfhosted
+    icon: fa-solid fa-star
+    url: https://github.com/awesome-selfhosted/awesome-selfhosted
+    target: _blank
+
+services:
+  - name: Dashboard projects
+    icon: fa-solid fa-table-columns
+    items:
+      - name: Homepage
+        icon: fa-solid fa-house
+        subtitle: YAMLとDocker自動検出
+        tag: homelab
+        url: https://github.com/gethomepage/homepage
+        target: _blank
+      - name: Dashy
+        icon: fa-solid fa-gauge-high
+        subtitle: テーマとウィジェットが豊富
+        tag: widgets
+        url: https://github.com/lissy93/dashy
+        target: _blank
+      - name: Flame
+        icon: fa-solid fa-fire
+        subtitle: GUIで管理するSpeedDial
+        tag: gui
+        url: https://github.com/pawelmalak/flame
+        target: _blank
+      - name: Glance
+        icon: fa-solid fa-rss
+        subtitle: フィード型ダッシュボード
+        tag: feeds
+        url: https://github.com/glanceapp/glance
+        target: _blank
+      - name: Jump
+        icon: fa-solid fa-arrow-up-right-from-square
+        subtitle: リンク集と死活監視
+        tag: status
+        url: https://github.com/daledavies/jump
+        target: _blank
+      - name: linkding
+        icon: fa-solid fa-bookmark
+        subtitle: タグ付きブックマーク管理
+        tag: bookmarks
+        url: https://github.com/sissbruecker/linkding
+        target: _blank
+      - name: Homarr
+        icon: fa-solid fa-grip
+        subtitle: ドラッグ＆ドロップ編集
+        tag: gui
+        url: https://github.com/homarr-labs/homarr
+        target: _blank
+      - name: Homer
+        icon: fa-solid fa-feather
+        subtitle: 軽量な静的YAMLランチャー
+        tag: yaml
+        url: https://github.com/bastienwirtz/homer
+        target: _blank
+
+  - name: Operations
+    icon: fa-solid fa-screwdriver-wrench
+    items:
+      - name: Docker documentation
+        icon: fa-brands fa-docker
+        subtitle: コンテナとCompose
+        tag: docs
+        url: https://docs.docker.com/
+        target: _blank
+      - name: Caddy documentation
+        icon: fa-solid fa-shield-halved
+        subtitle: リバースプロキシ
+        tag: docs
+        url: https://caddyserver.com/docs/
+        target: _blank
+      - name: Dashboard Icons
+        icon: fa-solid fa-icons
+        subtitle: セルフホスト向けアイコン集
+        tag: design
+        url: https://github.com/homarr-labs/dashboard-icons
+        target: _blank
+      - name: selfh.st
+        icon: fa-solid fa-newspaper
+        subtitle: セルフホスト関連ニュース
+        tag: community
+        url: https://selfh.st/
+        target: _blank

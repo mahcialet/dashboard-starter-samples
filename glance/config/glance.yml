@@ -25,6 +25,10 @@ pages:
                     url: https://github.com/daledavies/jump
                   - title: linkding
                     url: https://github.com/sissbruecker/linkding
+                  - title: Homarr
+                    url: https://github.com/homarr-labs/homarr
+                  - title: Homer
+                    url: https://github.com/bastienwirtz/homer
               - title: Operations
                 links:
                   - title: Docker
@@ -91,3 +95,5 @@ pages:
               - lissy93/dashy
               - daledavies/jump
               - sissbruecker/linkding
+              - homarr-labs/homarr
+              - bastienwirtz/homer

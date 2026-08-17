@@ -235,7 +235,7 @@
     <header>
       <p class="eyebrow">Self-hosted playground</p>
       <h1>Choose your dashboard.</h1>
-      <p class="lead">6種類のセルフホスト型ダッシュボードを、同じDocker Composeスタックから比較できます。各サービスはCaddyのリバースプロキシ経由で別タブに開きます。</p>
+      <p class="lead">8種類のセルフホスト型ダッシュボードを、同じDocker Composeスタックから比較できます。各サービスはCaddyのリバースプロキシ経由で別タブに開きます。</p>
     </header>
 
     <section class="grid" aria-label="ダッシュボード一覧">
@@ -279,6 +279,21 @@
         <h2>linkding</h2>
         <p>タグ、検索、REST API、インポート機能を備えたブックマークデータベース。</p>
         <span class="credentials">Auth off by default <code>admin / change-me</code></span>
+        <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
+      </a>
+
+      <a class="card" style="--card-color: #fa5252" href='http://localhost:{{env "HOMARR_PORT"}}/' data-port='{{env "HOMARR_PORT"}}' target="_blank" rel="noopener noreferrer">
+        <div class="card-top"><span class="mark">Ha</span><span class="port">:{{env "HOMARR_PORT"}}</span></div>
+        <h2>Homarr</h2>
+        <p>ドラッグ＆ドロップでボードやウィジェットを配置できるGUI編集型ダッシュボード。</p>
+        <span class="credentials">First-run setup required</span>
+        <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
+      </a>
+
+      <a class="card" style="--card-color: #5cc8ff" href='http://localhost:{{env "HOMER_PORT"}}/' data-port='{{env "HOMER_PORT"}}' target="_blank" rel="noopener noreferrer">
+        <div class="card-top"><span class="mark">Hr</span><span class="port">:{{env "HOMER_PORT"}}</span></div>
+        <h2>Homer</h2>
+        <p>単一のYAMLでリンクと見た目を管理できる、非常に軽量な静的ランチャー。</p>
         <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
       </a>
     </section>

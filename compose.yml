@@ -9,6 +9,8 @@ services:
       - "${GLANCE_PORT:-8084}:8084"
       - "${JUMP_PORT:-8085}:8085"
       - "${LINKDING_PORT:-8086}:8086"
+      - "${HOMARR_PORT:-8087}:8087"
+      - "${HOMER_PORT:-8088}:8088"
     environment:
       INDEX_PORT: "${INDEX_PORT:-8080}"
       HOMEPAGE_PORT: "${HOMEPAGE_PORT:-8081}"
@@ -17,6 +19,8 @@ services:
       GLANCE_PORT: "${GLANCE_PORT:-8084}"
       JUMP_PORT: "${JUMP_PORT:-8085}"
       LINKDING_PORT: "${LINKDING_PORT:-8086}"
+      HOMARR_PORT: "${HOMARR_PORT:-8087}"
+      HOMER_PORT: "${HOMER_PORT:-8088}"
       LINKDING_PROXY_USER: "${LD_SUPERUSER_NAME:-admin}"
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
@@ -38,6 +42,10 @@ services:
         condition: service_started
       linkding-init:
         condition: service_completed_successfully
+      homarr:
+        condition: service_started
+      homer:
+        condition: service_started
     restart: unless-stopped
 
   homepage:
@@ -100,6 +108,8 @@ services:
       SAMPLE_GLANCE_URL: "http://localhost:${GLANCE_PORT:-8084}"
       SAMPLE_JUMP_URL: "http://localhost:${JUMP_PORT:-8085}"
       SAMPLE_LINKDING_URL: "http://localhost:${LINKDING_PORT:-8086}"
+      SAMPLE_HOMARR_URL: "http://localhost:${HOMARR_PORT:-8087}"
+      SAMPLE_HOMER_URL: "http://localhost:${HOMER_PORT:-8088}"
     volumes:
       - flame-data:/app/data
       - ./flame/seed.mjs:/seed/seed.mjs:ro
@@ -176,8 +186,64 @@ services:
         condition: service_healthy
     restart: "no"
 
+  homarr:
+    image: ghcr.io/homarr-labs/homarr:latest
+    environment:
+      SECRET_ENCRYPTION_KEY: "${HOMARR_SECRET_ENCRYPTION_KEY:-0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef}"
+    volumes:
+      - homarr-data:/appdata
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      homepage.group: Dashboard samples
+      homepage.name: Homarr
+      homepage.icon: homarr.png
+      homepage.href: "http://localhost:${HOMARR_PORT:-8087}"
+      homepage.description: GUIで配置するHomelabダッシュボード
+      glance.name: Homarr sample
+      glance.icon: si:homarr
+      glance.url: "http://localhost:${HOMARR_PORT:-8087}"
+      glance.description: Caddy経由で公開されるHomarr
+      jump.name: Homarr sample
+      jump.url: "http://localhost:${HOMARR_PORT:-8087}"
+      jump.description: GUI編集型のHomelabダッシュボード
+      jump.tags: home,dashboard,gui
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:7575').then((response) => { if (!response.ok) process.exit(1); }).catch(() => process.exit(1));"
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 12
+    restart: unless-stopped
+
+  homer:
+    image: b4bz/homer:latest
+    environment:
+      INIT_ASSETS: "0"
+    volumes:
+      - ./homer/assets/config.yml:/www/assets/config.yml:ro
+    labels:
+      homepage.group: Dashboard samples
+      homepage.name: Homer
+      homepage.icon: homer.png
+      homepage.href: "http://localhost:${HOMER_PORT:-8088}"
+      homepage.description: Git管理しやすい静的YAMLランチャー
+      glance.name: Homer sample
+      glance.icon: si:homer
+      glance.url: "http://localhost:${HOMER_PORT:-8088}"
+      glance.description: Caddy経由で公開されるHomer
+      jump.name: Homer sample
+      jump.url: "http://localhost:${HOMER_PORT:-8088}"
+      jump.description: 軽量な静的YAMLランチャー
+      jump.tags: home,dashboard,yaml
+    restart: unless-stopped
+
 volumes:
   caddy-data:
   caddy-config:
   flame-data:
   linkding-data:
+  homarr-data:

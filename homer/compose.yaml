@@ -1,0 +1,10 @@
+services:
+  homer:
+    image: b4bz/homer:latest
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      INIT_ASSETS: "0"
+    volumes:
+      - ./assets/config.yml:/www/assets/config.yml:ro
+    restart: unless-stopped

@@ -44,3 +44,11 @@
 		header_up Remote-User {$LINKDING_PROXY_USER:admin}
 	}
 }
+
+:8087 {
+	reverse_proxy homarr:7575
+}
+
+:8088 {
+	reverse_proxy homer:8080
+}
