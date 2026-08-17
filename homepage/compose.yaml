@@ -1,0 +1,17 @@
+services:
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    ports:
+      - "${PORT:-8080}:3000"
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: "${HOMEPAGE_ALLOWED_HOSTS:-localhost:8080,127.0.0.1:8080}"
+    volumes:
+      - ./config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    labels:
+      homepage.group: Dashboard samples
+      homepage.name: Homepage
+      homepage.icon: homepage.png
+      homepage.href: "http://localhost:${PORT:-8080}"
+      homepage.description: Dockerラベルから自動検出されたサービス
+    restart: unless-stopped

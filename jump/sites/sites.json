@@ -1,0 +1,30 @@
+{
+  "default": {
+    "nofollow": true,
+    "newtab": true
+  },
+  "sites": [
+    {
+      "name": "Jump",
+      "url": "https://github.com/daledavies/jump",
+      "description": "Jumpのソースコードとリリース",
+      "icon": "github",
+      "nofollow": false,
+      "tags": ["home", "dashboard"]
+    },
+    {
+      "name": "Docker Documentation",
+      "url": "https://docs.docker.com/",
+      "description": "Docker公式ドキュメント",
+      "icon": "docker",
+      "tags": ["home", "docker"]
+    },
+    {
+      "name": "Awesome Selfhosted",
+      "url": "https://github.com/awesome-selfhosted/awesome-selfhosted",
+      "description": "セルフホスト可能なOSSの一覧",
+      "icon": "github",
+      "tags": ["home", "dashboard"]
+    }
+  ]
+}

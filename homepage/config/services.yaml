@@ -1,0 +1,13 @@
+- Resources:
+    - Homepage documentation:
+        icon: homepage.png
+        href: https://gethomepage.dev/
+        description: 設定とサービス統合の公式ドキュメント
+    - Docker documentation:
+        icon: docker.png
+        href: https://docs.docker.com/
+        description: コンテナ運用の公式ドキュメント
+    - GitHub:
+        icon: github.png
+        href: https://github.com/gethomepage/homepage
+        description: Homepageのソースコードとリリース

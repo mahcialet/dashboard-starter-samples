@@ -1,0 +1,58 @@
+server:
+  port: 8080
+
+pages:
+  - name: Home
+    columns:
+      - size: small
+        widgets:
+          - type: calendar
+            first-day-of-week: monday
+
+          - type: bookmarks
+            groups:
+              - title: Development
+                links:
+                  - title: GitHub
+                    url: https://github.com/
+                  - title: Docker Hub
+                    url: https://hub.docker.com/
+                  - title: Glance documentation
+                    url: https://github.com/glanceapp/glance/tree/main/docs
+
+      - size: full
+        widgets:
+          - type: search
+            search-engine: duckduckgo
+            autofocus: true
+
+          - type: rss
+            title: Dashboard releases
+            limit: 8
+            collapse-after: 5
+            cache: 1h
+            feeds:
+              - url: https://github.com/glanceapp/glance/releases.atom
+                title: Glance
+              - url: https://github.com/gethomepage/homepage/releases.atom
+                title: Homepage
+              - url: https://github.com/lissy93/dashy/releases.atom
+                title: Dashy
+
+          - type: docker-containers
+            hide-by-default: false
+
+      - size: small
+        widgets:
+          - type: weather
+            location: Tokyo, Japan
+            units: metric
+            hour-format: 24h
+
+          - type: releases
+            cache: 1d
+            repositories:
+              - glanceapp/glance
+              - gethomepage/homepage
+              - lissy93/dashy
+              - sissbruecker/linkding

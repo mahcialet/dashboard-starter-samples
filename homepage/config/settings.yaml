@@ -1,0 +1,14 @@
+title: Homelab Dashboard
+description: HomepageのYAML・Docker連携サンプル
+theme: dark
+color: slate
+headerStyle: boxed
+statusStyle: dot
+useEqualHeights: true
+layout:
+  Dashboard samples:
+    style: row
+    columns: 3
+  Resources:
+    style: row
+    columns: 3
