@@ -155,6 +155,26 @@
       line-height: 1.6;
     }
 
+    .credentials {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+      padding: 0.38rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      background: rgb(0 0 0 / 18%);
+      color: var(--muted);
+      font-size: 0.74rem;
+    }
+
+    .credentials code {
+      color: var(--text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.76rem;
+    }
+
     .open {
       display: flex;
       align-items: center;
@@ -258,6 +278,7 @@
         <div class="card-top"><span class="mark">L</span><span class="port">:{{env "LINKDING_PORT"}}</span></div>
         <h2>linkding</h2>
         <p>タグ、検索、REST API、インポート機能を備えたブックマークデータベース。</p>
+        <span class="credentials">Auth off by default <code>admin / change-me</code></span>
         <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
       </a>
     </section>

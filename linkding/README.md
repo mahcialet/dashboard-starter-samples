@@ -4,17 +4,28 @@
 
 ## 起動
 
-サンプル用のユーザー名とパスワードを指定して起動します。
+既定ではCaddyの固定認証ヘッダーを使って自動ログインします。
 
 ```bash
+docker compose up -d
+```
+
+<http://localhost:8080> を開くと、サンプル用の `admin` ユーザーとしてログインした状態で表示されます。ブラウザからのアクセスは同梱のCaddyを経由し、linkding本体はホストへ直接公開されません。
+
+別ポートなら `PORT=8081 docker compose up -d` とします。
+
+## 認証の切り替え
+
+既定では認証OFF相当の自動ログインです。ログイン画面と資格情報による認証を試す場合は、認証バイパスを無効にします。
+
+```bash
+LINKDING_AUTH_BYPASS=False \
 LD_SUPERUSER_NAME=admin \
 LD_SUPERUSER_PASSWORD='replace-with-a-strong-password' \
 docker compose up -d
 ```
 
-<http://localhost:8080> を開き、指定した資格情報でログインします。環境変数を省略した場合は、サンプル用の `admin` / `change-me` が作成されます。既存volumeに同名ユーザーがいる場合、資格情報は作り直されません。
-
-別ポートなら `PORT=8081 docker compose up -d` とします。
+認証OFF時はCaddyが `Remote-User: admin` を固定で上書きし、linkdingは `HTTP_REMOTE_USER` を信頼して自動ログインします。ユーザー名を変える場合は `LD_SUPERUSER_NAME` も指定してください。そのCaddyへアクセスできる全員が同じユーザーとして操作できるため、認証OFFのままインターネットや信頼できないネットワークへ公開しないでください。
 
 ## 試せること
 

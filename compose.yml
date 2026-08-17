@@ -17,6 +17,7 @@ services:
       GLANCE_PORT: "${GLANCE_PORT:-8084}"
       JUMP_PORT: "${JUMP_PORT:-8085}"
       LINKDING_PORT: "${LINKDING_PORT:-8086}"
+      LINKDING_PROXY_USER: "${LD_SUPERUSER_NAME:-admin}"
     volumes:
       - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
       - ./caddy/site:/srv:ro
@@ -147,6 +148,8 @@ services:
     environment:
       LD_SUPERUSER_NAME: "${LD_SUPERUSER_NAME:-admin}"
       LD_SUPERUSER_PASSWORD: "${LD_SUPERUSER_PASSWORD:-change-me}"
+      LD_ENABLE_AUTH_PROXY: "${LINKDING_AUTH_BYPASS:-True}"
+      LD_AUTH_PROXY_USERNAME_HEADER: HTTP_REMOTE_USER
     volumes:
       - linkding-data:/etc/linkding/data
     restart: unless-stopped

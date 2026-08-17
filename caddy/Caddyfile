@@ -40,5 +40,7 @@
 }
 
 :8086 {
-	reverse_proxy linkding:9090
+	reverse_proxy linkding:9090 {
+		header_up Remote-User {$LINKDING_PROXY_USER:admin}
+	}
 }

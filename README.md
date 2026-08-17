@@ -39,6 +39,8 @@ Docker EngineとDocker Compose v2が必要です。
 | <http://localhost:8085> | Jump |
 | <http://localhost:8086> | linkding |
 
+linkdingはサンプルをすぐ試せるよう、既定で認証OFF相当の自動ログインです。認証を有効にする場合は `LINKDING_AUTH_BYPASS=False ./start.sh` とし、ユーザー名 `admin`、パスワード `change-me` でログインします。`LD_SUPERUSER_NAME` と `LD_SUPERUSER_PASSWORD` で資格情報を変更できます。既定の認証バイパス状態はインターネットへ公開しないでください。
+
 統合起動時も各アプリ本体はホストへ直接公開されず、すべてCaddyを経由します。停止はリポジトリルートで `docker compose down` とします。ポートを明示管理したい場合は、`INDEX_PORT`、`HOMEPAGE_PORT`、`DASHY_PORT`、`FLAME_PORT`、`GLANCE_PORT`、`JUMP_PORT`、`LINKDING_PORT` を指定して `docker compose up -d` を直接実行できます。
 
 ### 1サービスだけ試す

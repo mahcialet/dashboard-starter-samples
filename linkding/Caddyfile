@@ -1,0 +1,10 @@
+{
+	auto_https off
+	admin off
+}
+
+:8080 {
+	reverse_proxy linkding:9090 {
+		header_up Remote-User {$LINKDING_PROXY_USER:admin}
+	}
+}

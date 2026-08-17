@@ -1,11 +1,24 @@
 services:
+  proxy:
+    image: caddy:2-alpine
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      LINKDING_PROXY_USER: "${LD_SUPERUSER_NAME:-admin}"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+    depends_on:
+      linkding:
+        condition: service_healthy
+    restart: unless-stopped
+
   linkding:
     image: sissbruecker/linkding:latest
-    ports:
-      - "${PORT:-8080}:9090"
     environment:
       LD_SUPERUSER_NAME: "${LD_SUPERUSER_NAME:-admin}"
       LD_SUPERUSER_PASSWORD: "${LD_SUPERUSER_PASSWORD:-change-me}"
+      LD_ENABLE_AUTH_PROXY: "${LINKDING_AUTH_BYPASS:-True}"
+      LD_AUTH_PROXY_USERNAME_HEADER: HTTP_REMOTE_USER
     volumes:
       - linkding-data:/etc/linkding/data
     restart: unless-stopped
