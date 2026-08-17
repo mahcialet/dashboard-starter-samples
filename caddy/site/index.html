@@ -239,13 +239,6 @@
     </header>
 
     <section class="grid" aria-label="ダッシュボード一覧">
-      <a class="card" style="--card-color: #70b7ff" href='http://localhost:{{env "HOMEPAGE_PORT"}}/' data-port='{{env "HOMEPAGE_PORT"}}' target="_blank" rel="noopener noreferrer">
-        <div class="card-top"><span class="mark">H</span><span class="port">:{{env "HOMEPAGE_PORT"}}</span></div>
-        <h2>Homepage</h2>
-        <p>Dockerラベル自動検出とAPI統合に強い、Homelab向けサービス一覧。</p>
-        <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
-      </a>
-
       <a class="card" style="--card-color: #b69cff" href='http://localhost:{{env "DASHY_PORT"}}/' data-port='{{env "DASHY_PORT"}}' target="_blank" rel="noopener noreferrer">
         <div class="card-top"><span class="mark">D</span><span class="port">:{{env "DASHY_PORT"}}</span></div>
         <h2>Dashy</h2>
@@ -267,6 +260,28 @@
         <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
       </a>
 
+      <a class="card" style="--card-color: #fa5252" href='http://localhost:{{env "HOMARR_PORT"}}/' data-port='{{env "HOMARR_PORT"}}' target="_blank" rel="noopener noreferrer">
+        <div class="card-top"><span class="mark">Ha</span><span class="port">:{{env "HOMARR_PORT"}}</span></div>
+        <h2>Homarr</h2>
+        <p>ドラッグ＆ドロップでボードやウィジェットを配置できるGUI編集型ダッシュボード。</p>
+        <span class="credentials">Auto login · <code>demo / demo</code></span>
+        <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
+      </a>
+
+      <a class="card" style="--card-color: #70b7ff" href='http://localhost:{{env "HOMEPAGE_PORT"}}/' data-port='{{env "HOMEPAGE_PORT"}}' target="_blank" rel="noopener noreferrer">
+        <div class="card-top"><span class="mark">H</span><span class="port">:{{env "HOMEPAGE_PORT"}}</span></div>
+        <h2>Homepage</h2>
+        <p>Dockerラベル自動検出とAPI統合に強い、Homelab向けサービス一覧。</p>
+        <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
+      </a>
+
+      <a class="card" style="--card-color: #5cc8ff" href='http://localhost:{{env "HOMER_PORT"}}/' data-port='{{env "HOMER_PORT"}}' target="_blank" rel="noopener noreferrer">
+        <div class="card-top"><span class="mark">Hr</span><span class="port">:{{env "HOMER_PORT"}}</span></div>
+        <h2>Homer</h2>
+        <p>単一のYAMLでリンクと見た目を管理できる、非常に軽量な静的ランチャー。</p>
+        <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
+      </a>
+
       <a class="card" style="--card-color: #ff7f9c" href='http://localhost:{{env "JUMP_PORT"}}/' data-port='{{env "JUMP_PORT"}}' target="_blank" rel="noopener noreferrer">
         <div class="card-top"><span class="mark">J</span><span class="port">:{{env "JUMP_PORT"}}</span></div>
         <h2>Jump</h2>
@@ -279,21 +294,6 @@
         <h2>linkding</h2>
         <p>タグ、検索、REST API、インポート機能を備えたブックマークデータベース。</p>
         <span class="credentials">Auth off by default <code>admin / change-me</code></span>
-        <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
-      </a>
-
-      <a class="card" style="--card-color: #fa5252" href='http://localhost:{{env "HOMARR_PORT"}}/' data-port='{{env "HOMARR_PORT"}}' target="_blank" rel="noopener noreferrer">
-        <div class="card-top"><span class="mark">Ha</span><span class="port">:{{env "HOMARR_PORT"}}</span></div>
-        <h2>Homarr</h2>
-        <p>ドラッグ＆ドロップでボードやウィジェットを配置できるGUI編集型ダッシュボード。</p>
-        <span class="credentials">Auto login · <code>demo / demo</code></span>
-        <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
-      </a>
-
-      <a class="card" style="--card-color: #5cc8ff" href='http://localhost:{{env "HOMER_PORT"}}/' data-port='{{env "HOMER_PORT"}}' target="_blank" rel="noopener noreferrer">
-        <div class="card-top"><span class="mark">Hr</span><span class="port">:{{env "HOMER_PORT"}}</span></div>
-        <h2>Homer</h2>
-        <p>単一のYAMLでリンクと見た目を管理できる、非常に軽量な静的ランチャー。</p>
         <span class="open">Open dashboard <span aria-hidden="true">↗</span></span>
       </a>
     </section>

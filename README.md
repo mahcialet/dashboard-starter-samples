@@ -6,14 +6,14 @@
 
 | ディレクトリ | OSS | 向いている用途 | 主な設定／データ |
 | --- | --- | --- | --- |
-| `homepage` | Homepage | Homelab、Dockerサービス一覧 | YAML、Dockerラベル |
 | `dashy` | Dashy | 多機能なスタートページ | YAML、UIエディタ |
 | `flame` | Flame | シンプルなSpeedDial | SQLite、GUI |
 | `glance` | Glance | RSS、天気、Docker情報 | YAML、ウィジェット |
+| `homarr` | Homarr | GUI編集型Homelabダッシュボード | SQLite、ドラッグ＆ドロップ |
+| `homepage` | Homepage | Homelab、Dockerサービス一覧 | YAML、Dockerラベル |
+| `homer` | Homer | 軽量な静的ランチャー | YAML、静的ファイル |
 | `jump` | Jump | リンク集、リアルタイム死活監視 | JSON、Dockerラベル |
 | `linkding` | linkding | タグ付きブックマーク管理 | SQLite、REST API、GUI |
-| `homarr` | Homarr | GUI編集型Homelabダッシュボード | SQLite、ドラッグ＆ドロップ |
-| `homer` | Homer | 軽量な静的ランチャー | YAML、静的ファイル |
 
 ## 動かし方
 
@@ -34,14 +34,14 @@ Docker EngineとDocker Compose v2が必要です。
 | 既定URL | サービス |
 | --- | --- |
 | <http://localhost:8080> | インデックス |
-| <http://localhost:8081> | Homepage |
-| <http://localhost:8082> | Dashy |
-| <http://localhost:8083> | Flame |
-| <http://localhost:8084> | Glance |
-| <http://localhost:8085> | Jump |
-| <http://localhost:8086> | linkding |
-| <http://localhost:8087> | Homarr |
-| <http://localhost:8088> | Homer |
+| <http://localhost:8081> | Dashy |
+| <http://localhost:8082> | Flame |
+| <http://localhost:8083> | Glance |
+| <http://localhost:8084> | Homarr |
+| <http://localhost:8085> | Homepage |
+| <http://localhost:8086> | Homer |
+| <http://localhost:8087> | Jump |
+| <http://localhost:8088> | linkding |
 
 linkdingはサンプルをすぐ試せるよう、既定で認証OFF相当の自動ログインです。認証を有効にする場合は `LINKDING_AUTH_BYPASS=False ./start.sh` とし、ユーザー名 `admin`、パスワード `change-me` でログインします。`LD_SUPERUSER_NAME` と `LD_SUPERUSER_PASSWORD` で資格情報を変更できます。既定の認証バイパス状態はインターネットへ公開しないでください。
 
@@ -51,7 +51,7 @@ Homarrの連携情報の暗号化に使う既定鍵もサンプル専用です�
 
 各製品には比較用の初期コンテンツを用意しています。Homepage、Dashy、Glance、Jump、HomerはGit管理できる設定ファイルからリンクやウィジェットを読み込みます。Flameは初期化API、linkdingは公式のNetscapeブックマーク取り込みコマンドで、named volumeへ初回だけデータを投入します。Homarrは公式のデモ用管理者、アプリ、ウィジェット、ボードを自動生成します。
 
-統合起動時も各アプリ本体はホストへ直接公開されず、すべてCaddyを経由します。停止はリポジトリルートで `docker compose down` とします。ポートを明示管理したい場合は、`INDEX_PORT`、`HOMEPAGE_PORT`、`DASHY_PORT`、`FLAME_PORT`、`GLANCE_PORT`、`JUMP_PORT`、`LINKDING_PORT`、`HOMARR_PORT`、`HOMER_PORT` を指定して `docker compose up -d` を直接実行できます。
+統合起動時も各アプリ本体はホストへ直接公開されず、すべてCaddyを経由します。停止はリポジトリルートで `docker compose down` とします。ポートを明示管理したい場合は、`INDEX_PORT`、`DASHY_PORT`、`FLAME_PORT`、`GLANCE_PORT`、`HOMARR_PORT`、`HOMEPAGE_PORT`、`HOMER_PORT`、`JUMP_PORT`、`LINKDING_PORT` を指定して `docker compose up -d` を直接実行できます。
 
 ### 1サービスだけ試す
 

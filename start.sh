@@ -51,25 +51,25 @@ if [[ -n "$(docker compose ps --status running -q caddy 2>/dev/null)" ]]; then
 fi
 
 assign_port INDEX_PORT
-assign_port HOMEPAGE_PORT
 assign_port DASHY_PORT
 assign_port FLAME_PORT
 assign_port GLANCE_PORT
+assign_port HOMARR_PORT
+assign_port HOMEPAGE_PORT
+assign_port HOMER_PORT
 assign_port JUMP_PORT
 assign_port LINKDING_PORT
-assign_port HOMARR_PORT
-assign_port HOMER_PORT
 
 docker compose up -d
 
 echo
 echo "Dashboard stack started:"
 printf '  Index:    http://localhost:%s\n' "${INDEX_PORT}"
-printf '  Homepage: http://localhost:%s\n' "${HOMEPAGE_PORT}"
 printf '  Dashy:    http://localhost:%s\n' "${DASHY_PORT}"
 printf '  Flame:    http://localhost:%s\n' "${FLAME_PORT}"
 printf '  Glance:   http://localhost:%s\n' "${GLANCE_PORT}"
+printf '  Homarr:   http://localhost:%s\n' "${HOMARR_PORT}"
+printf '  Homepage: http://localhost:%s\n' "${HOMEPAGE_PORT}"
+printf '  Homer:    http://localhost:%s\n' "${HOMER_PORT}"
 printf '  Jump:     http://localhost:%s\n' "${JUMP_PORT}"
 printf '  linkding: http://localhost:%s\n' "${LINKDING_PORT}"
-printf '  Homarr:   http://localhost:%s\n' "${HOMARR_PORT}"
-printf '  Homer:    http://localhost:%s\n' "${HOMER_PORT}"
